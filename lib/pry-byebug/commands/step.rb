@@ -9,7 +9,11 @@ module PryByebug
   class StepCommand < Pry::ClassCommand
     include Helpers::Navigation
 
-    match "step"
+    def self.regexp
+      /^\s* s(?:tep)? (?:\s+(\S+))? \s*$/x
+    end
+
+    match regexp
     group "Byebug"
     description "Step execution into the next line or method."
 

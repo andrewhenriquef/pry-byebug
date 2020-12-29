@@ -13,7 +13,11 @@ module PryByebug
     include Helpers::Breakpoints
     include Helpers::Location
 
-    match "continue"
+    def self.regexp
+      /^\s* c(?:ont(?:inue)?)? (?:\s+(\S+))? \s*$/x
+    end
+
+    match regexp
     group "Byebug"
     description "Continue program execution and end the Pry session."
 
